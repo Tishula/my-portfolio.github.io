@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Portfolio Website</title>
+
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">Anton</a>
+        <nav>
+            <a id="homeBotton" class="active"> Home</a>
+            <a id= "skill-button" class= "skills" >Skills</a>
+            <a id="services-button" class="service" >Services</a>
+            <a id="contact-button" class="contact" >Contact</a>
+        </nav>
+    </header>
+    <section id="home-section" class="home">
+        <div class="home-img">
+            <img src="images/foto.jpg" alt="home-img">
+        </div>
+        <div class="home-content">
+            <h1>Hi, It's <span>Anton</span></h1>
+            <h3 class="typing-text">I'm a <span id= "typed-text"></span></h3>
+            <p>I create modern, responsive, and user-friendly websites with a focus on clean design and functionality. Feel free to explore my work and get in touch.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fa-sharp-duotone fa-light fa-circle-envelope"></i></a>
+                <a href="#"><i class="fa-brands fa-github"></i></a>
+                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+            <a href="https://www.upwork.com/freelancers/~015b4c686691cdc87e" class="btn">Hire me</a>
+        </div>
+    </section>
+     <section id= "skill-section" class="additional-section" >
+    <h1 class="skills-text">Skills</h1>
+     <div class="skills-container">
+            <div class="skill-block">
+                <i class="fab fa-html5 skill-icon"></i>
+                <div class="skill-title">HTML</div>
+
+                <div class="skill-description">I create the structure of web pages using semantic markup, forms, tables, and multimedia.</div>
+
+            </div>
+            <div class="skill-block">
+                <i class="fab fa-css3-alt skill-icon"></i>
+                <div class="skill-title">CSS</div>
+                <div class="skill-description">I style websites with responsive design, animations, and custom effects.</div>
+            </div>
+            <div class="skill-block">
+                <i class="fab fa-js skill-icon"></i>
+                <div class="skill-title">JavaScript</div>
+                <div class="skill-description"> I develop interactive elements, event handling, API integration, and DOM manipulation.</div>
+            </div>
+
+        </div>
+
+  </section>
+
+  <section id="services" class="services-section">
+    
+  <h2 class="section-title">Services</h2>
+  <div class="services-container">
+    <div class="service-block">
+        <i class="fas fa-code service-icon"></i>
+      <h3>Full Website Development</h3>
+      <p>I create responsive and user-friendly websites, including landing pages, multi-page sites, and personal portfolios.</p>
+    </div>
+    <div class="service-block">
+        <i class="fab fa-wordpress service-icon"></i>
+      <h3>WordPress Development</h3>
+      <p>From simple blogs to fully functional e-commerce sites, I ensure a seamless and optimized WordPress experience.</p>
+    </div>
+    <div class="service-block">
+        <i class="fas fa-cogs service-icon"></i>
+      <h3>Custom Web Applications</h3>
+      <p>I build interactive web applications, such as blogs, news portals, or custom dashboards, using modern technologies.</p>
+
+    </div>
+
+    
+  </div>
+  <div class="social-icon">
+                <a href="https://t.me/umfnttt"><i class="fa-brands fa-telegram"></i></a>
+                <a href="https://github.com/Tishula"><i class="fa-brands fa-github"></i></a>
+                <a href="https://open.spotify.com/user/31scr6bhecmffdlk4naczfsdb2gy"><i class="fa-brands fa-spotify"></i></a>
+                <a href="https://www.instagram.com/anto.nl?igsh=MXY5ODRiNG1oMHkzbQ%3D%3D&utm_source=qr"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+</section>
+
+
+
+
+  
+    <script>
+    document.getElementById('skill-button').addEventListener('click', () => {
+      const section = document.getElementById('skill-section');
+      section.scrollIntoView({ behavior: 'smooth' });
+    });
+     document.getElementById('homeBotton').addEventListener('click', () => {
+      const mainSection = document.getElementById('home-section');
+      mainSection.scrollIntoView({ behavior: 'smooth' });
+    });
+     document.getElementById('services-button').addEventListener('click', () => {
+      const mainSection = document.getElementById('services');
+      mainSection.scrollIntoView({ behavior: 'smooth' });
+    });
+     document.getElementById('contact-button').addEventListener('click', () => {
+      const mainSection = document.getElementById('services');
+      mainSection.scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+<script>
+  const textArray = ["Web Developer", "Developer", "Web Designer", "Front-end dev"];
+const typingSpeed = 150; // Скорость набора (мс)
+const erasingSpeed = 100; // Скорость стирания (мс)
+const delayBetweenTexts = 2000; // Задержка перед началом следующего текста (мс)
+
+let textIndex = 0; // Индекс текущего текста
+let charIndex = 0; // Индекс текущего символа
+const typedTextElement = document.getElementById("typed-text");
+
+function typeText() {
+  if (charIndex < textArray[textIndex].length) {
+    typedTextElement.textContent += textArray[textIndex].charAt(charIndex);
+    charIndex++;
+    setTimeout(typeText, typingSpeed);
+  } else {
+    setTimeout(eraseText, delayBetweenTexts);
+  }
+}
+
+function eraseText() {
+  if (charIndex > 0) {
+    typedTextElement.textContent = textArray[textIndex].substring(0, charIndex - 1);
+    charIndex--;
+    setTimeout(eraseText, erasingSpeed);
+  } else {
+    textIndex = (textIndex + 1) % textArray.length; // Переход к следующему тексту
+    setTimeout(typeText, typingSpeed);
+  }
+}
+
+// Запуск анимации
+document.addEventListener("DOMContentLoaded", () => {
+  setTimeout(typeText, delayBetweenTexts);
+});
+</script>
+    <script src="javaS/script.js" defer></script>
+</body>
+
+</html>
